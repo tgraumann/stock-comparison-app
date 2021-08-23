@@ -1,17 +1,23 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { overviewResponse, globalQuoteResponse } from '../api/urls';
 
-const Card = ({ pinnedStock, removeStock, index}) => {
+type CardProps = {
+    pinnedStock: String,
+    removeStock: (stock: String) => void,
+    index: Number,
+}
 
-    const [name, setName] = useState('');
-    const [currency, setCurrency] = useState('');
-    const [price, setPrice] = useState('');
-    const [changePercentStat, setChangePercentStat] = useState('');
-    const [highStat, setHighStat] = useState('');
-    const [lowStat, setLowStat] = useState('');
+const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
+
+    const [name, setName] = useState<String>('');
+    const [currency, setCurrency] = useState<String>('');
+    const [price, setPrice] = useState<String>('');
+    const [changePercentStat, setChangePercentStat] = useState<String>('');
+    const [highStat, setHighStat] = useState<String>('');
+    const [lowStat, setLowStat] = useState<String>('');
     
-    const handleClick = (stock) => {
+    const handleClick = (stock: String) => {
         removeStock(stock);
     };
 
@@ -19,10 +25,10 @@ const Card = ({ pinnedStock, removeStock, index}) => {
 
         const fetchData = async () => {
             try {
-                let overviewRes = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/query?function=OVERVIEW&symbol=${pinnedStock}&apikey=${process.env.REACT_APP_API_KEY2}`);
+                let overviewRes = await overviewResponse(pinnedStock);
                 setCurrency(overviewRes.data["Currency"]);
                 
-                let globalQuoteRes = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/query?function=GLOBAL_QUOTE&symbol=${pinnedStock}&apikey=${process.env.REACT_APP_API_KEY3}`);
+                let globalQuoteRes = await globalQuoteResponse(pinnedStock);
                 setPrice(globalQuoteRes.data["Global Quote"]["05. price"]);
                 setName(overviewRes.data["Name"]);
                 setChangePercentStat(globalQuoteRes.data["Global Quote"]["10. change percent"]);
@@ -66,7 +72,7 @@ const Card = ({ pinnedStock, removeStock, index}) => {
                         color: 'white',
                         width: '30px',
                         textAlign: 'center',
-                        fontWeight: '600',
+                        fontWeight: 'lighter',
                         padding: '1px',
                     }} 
                     onClick={() => handleClick(pinnedStock)}

@@ -1,23 +1,30 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { searchResponse } from '../api/urls';
 
-const InputDropdown = ({ handleStockSelect }) => {
+type InputDropdownProps = {
+    handleStockSelect: (e: any) => void,
+}
 
-    const [inputValue, setInputValue] = useState('');
-    const [dropdownList, setDropdownList] = useState([]);
+const InputDropdown:  React.FC<InputDropdownProps> = ({ handleStockSelect }) => {
+
+    const [inputValue, setInputValue] = useState<String>('');
+    const [dropdownList, setDropdownList] = useState<Array<any>>([]);
     
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         setInputValue(e.target.value);
     }
 
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
         handleStockSelect(e);
     }
+
+    const onSubmit = async (e: any) => e.preventDefault(); 
 
     const suggestionsList = () => {
         return dropdownList.map((stock, index) => {
             return (
                 <li 
+                    data-testid="list-item"
                     key={index} 
                     onClick={handleClick} 
                     style={{
@@ -40,11 +47,12 @@ const InputDropdown = ({ handleStockSelect }) => {
         });
     };
 
+
     useEffect(() => {
 
         const fetchData = async () => {
             try {
-                let searchRes = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=${process.env.REACT_APP_API_KEY1}`);
+                let searchRes = await searchResponse(inputValue);
                 if(searchRes.data.bestMatches) {
                     setDropdownList(searchRes.data.bestMatches);
                 }
@@ -52,7 +60,7 @@ const InputDropdown = ({ handleStockSelect }) => {
                 console.log('Error with dropdown search: ', err);
             }
         };
-        
+
         if (inputValue.length) {
             fetchData();
         }
@@ -67,13 +75,14 @@ const InputDropdown = ({ handleStockSelect }) => {
                 borderRadius: '20px',
             }}
         >
-            <form 
+            <form onSubmit={onSubmit}
                 className="d-flex flex-column w-100 align-items-center"       
             >
-                <label>
+                <label data-testid="label">
                     Search up to 3 stocks and pin them to the dashboard to compare them:
                 </label>
                 <input 
+                    data-testid="input"
                     className="mt-4 p-2"
                     style={{width: '300px',}}
                     type="text" 

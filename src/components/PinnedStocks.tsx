@@ -1,9 +1,15 @@
+import React from 'react';
 import Card from './Card';
 import LineChart from './LineChart';
 
-const PinnedStocks = ({ pinnedStocks, handleRemoveStock }) => {
+type PinnedStocksProps = {
+    pinnedStocks: Array<String>,
+    handleRemoveStock: (selectedStock: String) => void,
+}
 
-    const onRemoveStock = (selectedStock) => {
+const PinnedStocks: React.FC<PinnedStocksProps> = ({ pinnedStocks, handleRemoveStock }) => {
+
+    const onRemoveStock = (selectedStock: String) => {
         handleRemoveStock(selectedStock);
     };
 

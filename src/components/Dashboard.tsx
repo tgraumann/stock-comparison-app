@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import InputDropdown from "./InputDropdown";
 import PinnedStocks from './PinnedStocks';
 
-const Dashboard = () => {
 
-    const [selectedStocks, setSelectedStocks] = useState([]);
+const Dashboard: React.FC = () => {
 
-    const handleStockSelect = (e) => {
+    const [selectedStocks, setSelectedStocks] = useState<Array<String> | []>([]);
+
+    const handleStockSelect = (e: {target : { innerText: String }}) => {
         const { innerText } = e.target;
 
         if (selectedStocks.length < 3) {
@@ -14,9 +15,9 @@ const Dashboard = () => {
         }
     };
 
-    const handleRemoveStock = (selectedStock) => {
+    const handleRemoveStock = (selectedStock: String) => {
         const selectedStockArr = [...selectedStocks];
-        setSelectedStocks(selectedStockArr.filter((stock) => stock !== selectedStock));
+        setSelectedStocks(selectedStockArr.filter((stock: String) => stock !== selectedStock));
     };
 
     return (
