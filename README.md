@@ -8,4 +8,4 @@ Here you can:
 
 3. See up to 3 pinned columns to draw direct comparisons across the data sets.
 
-4. See graphical representation of a companys' cash flow and be able to compare it across the 3 selected companies.
+4. See graphical representation of a company’s cash flow and be able to compare it across the 3 selected companies.
