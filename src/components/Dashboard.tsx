@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputDropdown from "./InputDropdown";
+import SearchInput from "./SearchInput";
 import PinnedStocks from './PinnedStocks';
 
 
@@ -33,7 +33,7 @@ const Dashboard: React.FC = () => {
                     Stock Comparison App
                 </h1>
             </div>
-            <InputDropdown
+            <SearchInput
                 handleStockSelect={handleStockSelect}
             />
             <PinnedStocks 

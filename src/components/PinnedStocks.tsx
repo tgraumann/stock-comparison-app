@@ -18,14 +18,14 @@ const PinnedStocks: React.FC<PinnedStocksProps> = ({ pinnedStocks, handleRemoveS
 
         for (let i = 0; i < 3; i++) {
             if (pinnedStocks[i] !== undefined) {
-                    cardItems.push(
-                        <Card 
-                            pinnedStock={pinnedStocks[i]}
-                            removeStock={onRemoveStock}
-                            key={i}
-                            index={i}
-                        />
-                    )
+                cardItems.push(
+                    <Card 
+                        pinnedStock={pinnedStocks[i]}
+                        removeStock={onRemoveStock}
+                        key={i}
+                        index={i}
+                    />
+                )
             } else {
                 cardItems.push(
                     <div 
@@ -73,11 +73,9 @@ const PinnedStocks: React.FC<PinnedStocksProps> = ({ pinnedStocks, handleRemoveS
                 <CardBuilder />
             </div>
             {pinnedStocks && (
-                <div style={{width: '100%'}}>
-                    <LineChart pinnedStocks={pinnedStocks} />
-                </div>
+                <LineChart pinnedStocks={pinnedStocks} />
             )}
-        </div>
+            </div>
     );
 };
 

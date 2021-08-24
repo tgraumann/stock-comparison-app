@@ -2,51 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { searchResponse } from '../api/urls';
 
 type InputDropdownProps = {
-    handleStockSelect: (e: any) => void,
+    inputValue: String,
+    handleClick: (e: any) => void;
 }
 
-const InputDropdown:  React.FC<InputDropdownProps> = ({ handleStockSelect }) => {
-
-    const [inputValue, setInputValue] = useState<String>('');
-    const [dropdownList, setDropdownList] = useState<Array<any>>([]);
+const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick }) => {
     
-    const handleChange = (e: any) => {
-        setInputValue(e.target.value);
-    }
+    const [dropdownList, setDropdownList] = useState<Array<any>>([]);
 
-    const handleClick = (e: any) => {
-        handleStockSelect(e);
-    }
-
-    const onSubmit = async (e: any) => e.preventDefault(); 
-
-    const suggestionsList = () => {
-        return dropdownList.map((stock, index) => {
-            return (
-                <li 
-                    data-testid="list-item"
-                    key={index} 
-                    onClick={handleClick} 
-                    style={{
-                        cursor: 'pointer',
-                        height: '45px',
-                        lineHeight: '2.5em',
-                        borderBottom: '1px solid #bfbfbf8c',
-                    }}
-                    className={`
-                        mb-0
-                        dropdownListClass
-                        bg-${(index % 2) 
-                            ? 'light' 
-                            : 'white'}
-                    `}
-                >
-                    {stock['1. symbol']}
-                </li>
-                );
-        });
+    const handleStockSelect = (e: any) => {
+        handleClick(e);
     };
-
 
     useEffect(() => {
 
@@ -64,35 +30,15 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ handleStockSelect }) => 
         if (inputValue.length) {
             fetchData();
         }
-    }, [inputValue])
 
-    return (
-        <div 
-            className="w-75 p-5 my-5" 
-            style={{
-                margin: '0 auto',
-                boxShadow: '0px 0px 6px 0px rgb(0 0 0 / 20%)',
-                borderRadius: '20px',
-            }}
-        >
-            <form onSubmit={onSubmit}
-                className="d-flex flex-column w-100 align-items-center"       
-            >
-                <label data-testid="label">
-                    Search up to 3 stocks and pin them to the dashboard to compare them:
-                </label>
-                <input 
-                    data-testid="input"
-                    className="mt-4 p-2"
-                    style={{width: '300px',}}
-                    type="text" 
-                    onChange={handleChange} 
-                />
-            </form>
-            <div className="d-flex justify-content-center">
-            {(dropdownList.length && inputValue !== '')
+    }, [inputValue]);
+
+    return ( 
+        <div>
+            {(dropdownList.length > 0)
                 ? <ul 
-                    className="p-0 position-absolute" 
+                    data-testid="dropdown"
+                    className="p-0" 
                     style={{
                         listStyle: 'none', 
                         width: '300px', 
@@ -101,20 +47,42 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ handleStockSelect }) => 
                         boxShadow: '0px 0px 6px 0px rgb(49 45 45 / 68%)', 
                     }}
                 >
-                    {suggestionsList()}
+                    {dropdownList.map((stock, index) => {
+                        return (
+                            <li
+                                key={index} 
+                                onClick={handleStockSelect} 
+                                style={{
+                                    cursor: 'pointer',
+                                    height: '45px',
+                                    lineHeight: '2.5em',
+                                    borderBottom: '1px solid #bfbfbf8c',
+                                }}
+                                className={`
+                                    mb-0
+                                    dropdownListClass
+                                    bg-${(index % 2) 
+                                        ? 'light' 
+                                        : 'white'}
+                                `}
+                            >
+                                {stock['1. symbol']}
+                            </li>
+                            );
+                    })}
                 </ul>
                 : <p 
                     className="bg-light p-2" 
                     style={{
                         boxShadow: '0px 0px 6px 0px rgb(49 45 45 / 68%)', 
-                        width: '300px',}}
-                    >
-                        No suggestions...
-                    </p>
+                        width: '300px',
+                    }}
+                >
+                    No suggestions...
+                </p>
             }
-            </div>
         </div>
-    );
-};
+    )
+}
 
 export default InputDropdown;

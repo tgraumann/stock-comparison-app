@@ -23,6 +23,7 @@ const LineChart: React.FC<LineChartProps> = ({ pinnedStocks }) => {
     const [chartData, setChartData] = useState<DataProps | {}>({});
 
     useEffect(() =>{
+
         const fetchData = async () => {
             try {
                 // grab keys from first pinned stock to create chart labels from
@@ -56,8 +57,6 @@ const LineChart: React.FC<LineChartProps> = ({ pinnedStocks }) => {
                     datasets: stockDatasets
                 };
 
-               
-
                 // update chartData
                 setChartData(data);
 
@@ -72,7 +71,12 @@ const LineChart: React.FC<LineChartProps> = ({ pinnedStocks }) => {
     }, [pinnedStocks]);
 
     return (
-        <React.Fragment>
+        <div
+            style={{
+                margin: '0 auto', 
+                maxWidth: '75vw'
+            }}
+        >
             {pinnedStocks.length > 0 && (
                 <Line
                     className="px-5 pt-4 pb-5"
@@ -90,7 +94,7 @@ const LineChart: React.FC<LineChartProps> = ({ pinnedStocks }) => {
                     }}
                 />
             )}
-        </React.Fragment>
+        </div>
     );
 };
 
