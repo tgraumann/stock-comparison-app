@@ -21,11 +21,15 @@ const SearchInput:  React.FC<SearchInputProps> = ({ handleStockSelect }) => {
 
     return (
         <div 
-            className="w-75 p-5 my-5" 
+            className="
+                w-75 
+                p-5 
+                my-5 
+                rounded 
+                shadow-sm 
+                border" 
             style={{
-                margin: '0 auto',
-                boxShadow: '0px 0px 6px 0px rgb(0 0 0 / 20%)',
-                borderRadius: '20px',
+                margin: '0 auto'
             }}
         >
             <form 

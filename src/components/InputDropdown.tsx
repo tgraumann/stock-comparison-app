@@ -38,13 +38,14 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick 
             {(dropdownList.length > 0)
                 ? <ul 
                     data-testid="dropdown"
-                    className="p-0" 
+                    className="
+                        p-0 
+                        list-unstyled 
+                        shadow 
+                        overflow-auto" 
                     style={{
-                        listStyle: 'none', 
                         width: '300px', 
-                        overflowY: 'scroll', 
                         maxHeight: '180px',
-                        boxShadow: '0px 0px 6px 0px rgb(49 45 45 / 68%)', 
                     }}
                 >
                     {dropdownList.map((stock, index) => {
@@ -53,13 +54,14 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick 
                                 key={index} 
                                 onClick={handleStockSelect} 
                                 style={{
-                                    cursor: 'pointer',
                                     height: '45px',
                                     lineHeight: '2.5em',
-                                    borderBottom: '1px solid #bfbfbf8c',
                                 }}
+                                role="button"
                                 className={`
+                                    border-bottom
                                     mb-0
+                                    px-1
                                     dropdownListClass
                                     bg-${(index % 2) 
                                         ? 'light' 
@@ -72,9 +74,8 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick 
                     })}
                 </ul>
                 : <p 
-                    className="bg-light p-2" 
+                    className="bg-light p-2 shadow" 
                     style={{
-                        boxShadow: '0px 0px 6px 0px rgb(49 45 45 / 68%)', 
                         width: '300px',
                     }}
                 >

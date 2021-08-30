@@ -12,10 +12,10 @@ const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
 
     const [name, setName] = useState<String>('');
     const [currency, setCurrency] = useState<String>('');
-    const [price, setPrice] = useState<String>('');
+    const [price, setPrice] = useState<Number>();
     const [changePercentStat, setChangePercentStat] = useState<String>('');
-    const [highStat, setHighStat] = useState<String>('');
-    const [lowStat, setLowStat] = useState<String>('');
+    const [highStat, setHighStat] = useState<Number>();
+    const [lowStat, setLowStat] = useState<Number>();
     
     const handleClick = (stock: String) => {
         removeStock(stock);
@@ -29,11 +29,11 @@ const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
                 setCurrency(overviewRes.data["Currency"]);
                 
                 let globalQuoteRes = await globalQuoteResponse(pinnedStock);
-                setPrice(globalQuoteRes.data["Global Quote"]["05. price"]);
+                setPrice(Number(globalQuoteRes.data["Global Quote"]["05. price"]));
                 setName(overviewRes.data["Name"]);
                 setChangePercentStat(globalQuoteRes.data["Global Quote"]["10. change percent"]);
-                setHighStat(globalQuoteRes.data["Global Quote"]["03. high"]);
-                setLowStat(globalQuoteRes.data["Global Quote"]["04. low"]);
+                setHighStat(Number(globalQuoteRes.data["Global Quote"]["03. high"]));
+                setLowStat(Number(globalQuoteRes.data["Global Quote"]["04. low"]));
 
             } catch (err) {
                 console.log("Error fetching stock data: ", err);
@@ -47,10 +47,13 @@ const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
         <div 
             style={{
                 flex: '1 1 0',
-                boxShadow: '0px 0px 6px 0px rgb(0 0 0 / 20%)',
-                borderRadius: '20px',
             }} 
-            className="p-3 m-3"
+            className="
+                p-3 
+                m-3 
+                rounded 
+                shadow-sm 
+                border"
         >
             <div className="d-flex justify-content-between">
                 <div>
@@ -64,15 +67,16 @@ const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
                    
                 </div>
                 <span 
+                    className="
+                        rounded-circle 
+                        bg-danger 
+                        shadow-sm 
+                        text-white 
+                        text-center 
+                        font-weight-light"
                     style={{
-                        borderRadius: '50%',
-                        backgroundColor: '#e25353',
-                        boxShadow: '0px 0px 6px 0px rgb(0 0 0 / 20%)',
                         height: '30px',
-                        color: 'white',
                         width: '30px',
-                        textAlign: 'center',
-                        fontWeight: 'lighter',
                         padding: '1px',
                     }} 
                     onClick={() => handleClick(pinnedStock)}
@@ -82,19 +86,21 @@ const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
             </div>
             {price && changePercentStat ? (
                 <div className="d-flex"> 
-                    <div style={{fontSize: '42px'}}>
+                    <div className="fs-1">
                         {(changePercentStat[0] === '-') 
-                            ? <div style={{color: '#e25353', alignSelf: 'center'}} className="bi bi-arrow-down"></div>
-                            : <div style={{color: '#8dda9d', alignSelf: 'center'}} className="bi bi-arrow-up"></div>
+                            ? <div className="bi bi-arrow-down text-danger text-center"></div>
+                            : <div className="bi bi-arrow-up text-success text-center"></div>
                         }
                     </div>
                     <div>
-                        <h4>{currency !== '' ? currency : 'USD'} {price}</h4>
+                        <h4>{currency !== '' ? currency : 'USD'} {(price).toFixed(2)}</h4>
                         <p>{changePercentStat}</p>
                     </div>
                 </div>
             ) : (
-                <p className="text-secondary">Stock data currently unavailable...</p>
+                <p className="text-secondary">
+                    Stock data currently unavailable...
+                </p>
             )}
             <React.Fragment>
                 <h5>Stats:</h5>
@@ -103,14 +109,14 @@ const Card: React.FC<CardProps> = ({ pinnedStock, removeStock, index}) => {
                         <tr>
                             <th>High:</th>
                             {highStat
-                                ? <td>{highStat}</td>
+                                ? <td>{(highStat).toFixed(2)}</td>
                                 : <td className="text-secondary">...</td>
                             }
                         </tr>
                         <tr>
                             <th>Low:</th>
                             {lowStat
-                                ? <td>{lowStat}</td>
+                                ? <td>{(lowStat).toFixed(2)}</td>
                                 : <td className="text-secondary">...</td>
                             }
                         </tr>

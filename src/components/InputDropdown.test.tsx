@@ -73,6 +73,5 @@ describe("InputDropdown", () => {
         expect(screen.queryByText("DE")).toBeInTheDocument();
         expect(screen.queryByText("DEA")).toBeInTheDocument();
         expect(screen.queryByText("Deere & Company")).not.toBeInTheDocument();
-        expect(screen.queryByText("DE")).toHaveStyle({cursor: 'pointer'});
     });
 });

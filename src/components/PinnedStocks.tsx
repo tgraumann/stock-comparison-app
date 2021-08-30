@@ -29,11 +29,14 @@ const PinnedStocks: React.FC<PinnedStocksProps> = ({ pinnedStocks, handleRemoveS
             } else {
                 cardItems.push(
                     <div 
-                        className="p-3 m-3" 
+                        className="
+                            p-3 
+                            m-3 
+                            rounded 
+                            shadow-sm 
+                            border" 
                         style={{
                             flex: '1 1 0',
-                            boxShadow: '0px 0px 6px 0px rgb(0 0 0 / 20%)',
-                            borderRadius: '20px',
                             minHeight: '300px',
                         }} 
                         key={i}
@@ -58,13 +61,15 @@ const PinnedStocks: React.FC<PinnedStocksProps> = ({ pinnedStocks, handleRemoveS
     return (
         <div >
             <h1 
-                className="px-5 p-3"
+                className="
+                    px-5 
+                    p-3 
+                    rounded-right 
+                    bg-secondary 
+                    text-white 
+                    shadow-sm"
                 style={{
-                    backgroundColor: '#5094a2', 
-                    borderRadius: '0 50px 50px 0', 
                     width: '350px', 
-                    color: '#ffffff', 
-                    boxShadow: '0px 0px 6px 0px rgb(0 0 0 / 20%)',
                 }}
             >
                 Pinned Stocks

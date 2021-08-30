@@ -5,29 +5,30 @@ import PinnedStocks from './PinnedStocks';
 
 const Dashboard: React.FC = () => {
 
-    const [selectedStocks, setSelectedStocks] = useState<Array<String> | []>([]);
+    const [selectedStocks, setSelectedStocks] = useState<Array<String>>([]);
 
-    const handleStockSelect = (e: {target : { innerText: String }}) => {
+    const handleStockSelect = (e: { target : { innerText: String }}) => {
         const { innerText } = e.target;
 
-        if (selectedStocks.length < 3) {
-            setSelectedStocks([...selectedStocks, innerText]);
+        if (selectedStocks.length < 3) { 
+            selectedStocks.includes(innerText) 
+            ? alert(`Stock ${innerText} has already been pinned to the Dashboard.`)
+            : setSelectedStocks([...selectedStocks, innerText])
         }
     };
 
     const handleRemoveStock = (selectedStock: String) => {
-        const selectedStockArr = [...selectedStocks];
-        setSelectedStocks(selectedStockArr.filter((stock: String) => stock !== selectedStock));
+        setSelectedStocks(selectedStocks.filter((stock: String) => stock !== selectedStock));
     };
 
     return (
         <React.Fragment>
             <div 
-                className="container-fluid p-5 text-center"
-                style={{
-                    backgroundColor: '#0f6273',
-                    boxShadow: '0px 0px 6px 0px rgb(49 45 45 / 68%)', 
-                }}
+                className="
+                    container-fluid 
+                    p-5 text-center 
+                    bg-secondary 
+                    shadow"
             >
                 <h1 className="text-white">
                     Stock Comparison App

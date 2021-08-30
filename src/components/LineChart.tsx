@@ -86,7 +86,7 @@ const LineChart: React.FC<LineChartProps> = ({ pinnedStocks }) => {
                             y: {
                                 ticks: {
                                     callback: function(value: number) {
-                                        return '$' + value;
+                                        return '$' + (value).toFixed(2);
                                     }
                                 },
                             },
