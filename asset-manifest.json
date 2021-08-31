@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/stock-comparison-app/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/stock-comparison-app/static/js/main.a0a3d498.chunk.js",
+    "main.js.map": "/stock-comparison-app/static/js/main.a0a3d498.chunk.js.map",
+    "runtime-main.js": "/stock-comparison-app/static/js/runtime-main.48ae7eda.js",
+    "runtime-main.js.map": "/stock-comparison-app/static/js/runtime-main.48ae7eda.js.map",
+    "static/css/2.1a4cb130.chunk.css": "/stock-comparison-app/static/css/2.1a4cb130.chunk.css",
+    "static/js/2.77303d5d.chunk.js": "/stock-comparison-app/static/js/2.77303d5d.chunk.js",
+    "static/js/2.77303d5d.chunk.js.map": "/stock-comparison-app/static/js/2.77303d5d.chunk.js.map",
+    "static/js/3.4491e610.chunk.js": "/stock-comparison-app/static/js/3.4491e610.chunk.js",
+    "static/js/3.4491e610.chunk.js.map": "/stock-comparison-app/static/js/3.4491e610.chunk.js.map",
+    "index.html": "/stock-comparison-app/index.html",
+    "static/css/2.1a4cb130.chunk.css.map": "/stock-comparison-app/static/css/2.1a4cb130.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/stock-comparison-app/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.77303d5d.chunk.js.LICENSE.txt": "/stock-comparison-app/static/js/2.77303d5d.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/stock-comparison-app/static/media/bootstrap-icons.dfd0ea12.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.48ae7eda.js",
+    "static/css/2.1a4cb130.chunk.css",
+    "static/js/2.77303d5d.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.a0a3d498.chunk.js"
+  ]
+}
