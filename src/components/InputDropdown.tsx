@@ -3,14 +3,15 @@ import { searchResponse } from '../api/urls';
 
 type InputDropdownProps = {
     inputValue: String,
-    handleClick: (e: any) => void;
+    handleClick: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick }) => {
     
     const [dropdownList, setDropdownList] = useState<Array<any>>([]);
 
-    const handleStockSelect = (e: any) => {
+    const handleStockSelect = (event: React.MouseEvent<HTMLElement>) => {
+        const e = event as unknown as React.FormEvent<HTMLInputElement>;
         handleClick(e);
     };
 

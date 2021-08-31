@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import InputDropdown from './InputDropdown';
 
 type SearchInputProps = {
-    handleStockSelect: (e: any) => void,
+    handleStockSelect: (e: React.FormEvent<HTMLInputElement>) => void,
 }
 
 const SearchInput:  React.FC<SearchInputProps> = ({ handleStockSelect }) => {
 
     const [inputValue, setInputValue] = useState<String>('');
     
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     }
 
-    const handleClick = (e: any) => {
+    const handleClick = (e: React.FormEvent<HTMLInputElement>) => {
         handleStockSelect(e);
     }
 
-    const onSubmit = async (e: any) => e.preventDefault(); 
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => e.preventDefault(); 
 
     return (
         <div 

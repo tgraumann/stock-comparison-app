@@ -3,7 +3,7 @@ import InputDropdown from './InputDropdown';
 import axios from 'axios';
 
 const mockInputValue: String = 'DE';
-const mockHandleClick = (e: any) => jest.fn();
+const mockHandleClick = (e: React.FormEvent<HTMLInputElement>) => jest.fn();
 
 const axiosGetSpy = jest.spyOn(axios, 'get');
 

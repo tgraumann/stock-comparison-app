@@ -7,8 +7,9 @@ const Dashboard: React.FC = () => {
 
     const [selectedStocks, setSelectedStocks] = useState<Array<String>>([]);
 
-    const handleStockSelect = (e: { target : { innerText: String }}) => {
-        const { innerText } = e.target;
+    const handleStockSelect = (e: React.FormEvent<HTMLInputElement>) => {
+        const selectedStock = e.target as HTMLElement;
+        const { innerText } = selectedStock;
 
         if (selectedStocks.length < 3) { 
             selectedStocks.includes(innerText) 
