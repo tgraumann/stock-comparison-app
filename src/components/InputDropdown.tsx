@@ -45,7 +45,7 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick 
                         shadow 
                         overflow-auto" 
                     style={{
-                        width: '300px', 
+                        width: '250px', 
                         maxHeight: '180px',
                     }}
                 >
@@ -77,7 +77,7 @@ const InputDropdown:  React.FC<InputDropdownProps> = ({ inputValue, handleClick 
                 : <p 
                     className="bg-light p-2 shadow" 
                     style={{
-                        width: '300px',
+                        width: '250px',
                     }}
                 >
                     No suggestions...

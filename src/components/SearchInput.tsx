@@ -7,14 +7,17 @@ type SearchInputProps = {
 
 const SearchInput:  React.FC<SearchInputProps> = ({ handleStockSelect }) => {
 
-    const [inputValue, setInputValue] = useState<String>('');
-    
+    const [inputValue, setInputValue] = useState<string>('');
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     }
 
     const handleClick = (e: React.FormEvent<HTMLInputElement>) => {
         handleStockSelect(e);
+
+        // hide dropdown menu when user selects stock from dropdown
+        setInputValue('');
     }
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => e.preventDefault(); 
@@ -43,9 +46,10 @@ const SearchInput:  React.FC<SearchInputProps> = ({ handleStockSelect }) => {
                 <input 
                     data-testid="input"
                     className="mt-4 p-2"
-                    style={{width: '300px',}}
+                    style={{width: '250px',}}
                     type="text" 
                     onChange={handleChange} 
+                    value={inputValue}
                 />
             </form>
             <div className="d-flex justify-content-center">
