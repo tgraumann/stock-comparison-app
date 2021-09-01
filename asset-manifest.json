@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/stock-comparison-app/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/stock-comparison-app/static/js/main.5b22e6f4.chunk.js",
-    "main.js.map": "/stock-comparison-app/static/js/main.5b22e6f4.chunk.js.map",
+    "main.js": "/stock-comparison-app/static/js/main.e71e2ef5.chunk.js",
+    "main.js.map": "/stock-comparison-app/static/js/main.e71e2ef5.chunk.js.map",
     "runtime-main.js": "/stock-comparison-app/static/js/runtime-main.48ae7eda.js",
     "runtime-main.js.map": "/stock-comparison-app/static/js/runtime-main.48ae7eda.js.map",
     "static/css/2.1a4cb130.chunk.css": "/stock-comparison-app/static/css/2.1a4cb130.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.1a4cb130.chunk.css",
     "static/js/2.77303d5d.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.5b22e6f4.chunk.js"
+    "static/js/main.e71e2ef5.chunk.js"
   ]
 }
