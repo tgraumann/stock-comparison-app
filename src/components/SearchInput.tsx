@@ -29,7 +29,8 @@ const SearchInput:  React.FC<SearchInputProps> = ({ handleStockSelect }) => {
                 shadow-sm 
                 border" 
             style={{
-                margin: '0 auto'
+                margin: '0 auto',
+                height: '200px',
             }}
         >
             <form 
